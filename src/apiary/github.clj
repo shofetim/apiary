@@ -93,5 +93,6 @@
   [issues]
   (map #(hash-map :title (:title %)
                   :assignee (get-in % [:assignee :login] "unknown")
+                  :url (:html_url %)
                   :effort (extract-effort-estimate %))
        issues))
