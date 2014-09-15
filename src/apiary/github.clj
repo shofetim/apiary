@@ -62,8 +62,7 @@
     (closed-during weekstart (t/plus weekstart (t/weeks 1)) issues)))
 
 (defn issues
-  "Returns a lazy sequence of (closed) issues, grouped by week,
-  starting at the most recent full week."
+  "Returns a lazy sequence of (closed) issues, grouped by week."
   []
   (let [weeks (period-seq-dec (weekstart) (t/weeks 1))]
     (map week->issues weeks)))
@@ -85,8 +84,7 @@
            (group-by  #(nth % 0) per-issue-scores)))))
 
 (defn scores
-  "Returns a lazy sequence of score maps, one per week, starting at
-  the most recent full week"
+  "Returns a lazy sequence of score maps, one per week"
   []
   (map score (issues)))
 
