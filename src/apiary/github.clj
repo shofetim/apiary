@@ -96,3 +96,10 @@
                   :url (:html_url %)
                   :effort (extract-effort-estimate %))
        issues))
+
+(defn next-issues
+  "Issues tagged with next"
+  []
+  (issues/issues config/org config/repo {:auth config/auth :state "open"
+                                         :filter "* all" :per-page 100
+                                         :labels ["next"]}))
